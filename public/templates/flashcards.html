@@ -1,14 +1,11 @@
 <div>
-    <button class="category-button" ng-click="getCategoryCards(category)" ng-repeat="category in categories" ng-class="{active: category === activeCat}">
+    <button class="category-button" ui-sref=".category({category: category})" ng-repeat="category in categories" ng-class="{active: category === activeCat.category}">
         {{category}}
     </button>
 
-    <button class="category-button" ng-click="getCategoryCards()">
+    <button class="category-button" ui-sref="FlashCardPanel.home">
         Clear Categories
     </button>
 
-    <div><loader ng-show="loaded"></loader></div>
-
-	<flash-card ng-hide="loaded" ng-repeat="flashCard in flashCards | orderBy:'question'" card="flashCard" >
-	</flash-card>
+	<ui-view></ui-view>
 </div>

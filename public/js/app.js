@@ -1,6 +1,8 @@
 var app = angular.module("FlashCards", ["ui.router"]);
 
 app.config(function ($stateProvider){
+
+
 	$stateProvider.state("StatsPanel", {
 		url:"/stats",
 		templateUrl: "templates/stats.html",
@@ -14,8 +16,21 @@ app.config(function ($stateProvider){
 	});
 
 	$stateProvider.state("FlashCardPanel", {
-		url:"/",
+		url:"",
 		templateUrl: "templates/flashcards.html",
 		controller: "MainController"
 	});
+
+	$stateProvider.state("FlashCardPanel.home", {
+		url:"/",
+		templateUrl: "templates/categoryCards.html",
+		controller: "CategoryController"
+	});
+
+	$stateProvider.state("FlashCardPanel.category", {
+		url:"/category/:category",
+		templateUrl: "templates/categoryCards.html",
+		controller: "CategoryController"
+	});
+
 });

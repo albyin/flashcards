@@ -1,4 +1,4 @@
-app.controller('MainController', function ($scope, FlashCardsFactory) {
+app.controller('MainController', function ($scope, $state, FlashCardsFactory) {
 
 	$scope.categories = [
 	    'MongoDB',
@@ -7,26 +7,12 @@ app.controller('MainController', function ($scope, FlashCardsFactory) {
 	    'Node'
 	];
 
-	$scope.activeCat = undefined;
-	$scope.loaded = false;
+	$scope.activeCat = {};
 
-	function currentlyLoading() {
-		$scope.loaded = true;
-	}
+	// $state.go('.category({ category: "" })');
 
-	function doneLoading() {
-		$scope.loaded = false;
-	}
-
-	FlashCardsFactory.getFlashCards(null, currentlyLoading, doneLoading).then( function (flashCards){
-		$scope.flashCards = flashCards;
-	});
-
-	$scope.getCategoryCards = function (category){
-		FlashCardsFactory.getFlashCards(category, currentlyLoading, doneLoading).then( function (flashCards){
-			$scope.flashCards = flashCards;
-			$scope.activeCat = category;
-		});
-	};
+	// FlashCardsFactory.getFlashCards(null).then( function (flashCards){
+	// 	$scope.flashCards = flashCards;
+	// });
 
 });
