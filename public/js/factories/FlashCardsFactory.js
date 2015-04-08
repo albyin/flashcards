@@ -13,6 +13,11 @@ app.factory('FlashCardsFactory', function ($http) {
                             afterHttp();
 			        		return response.data;
 			        	});
+        },
+        addNewFlashCard: function (card){
+            return $http.post("/cards", card).success(function (card){
+            
+            });
         }
     };
 });
