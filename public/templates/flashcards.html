@@ -1,0 +1,14 @@
+<div>
+    <button class="category-button" ng-click="getCategoryCards(category)" ng-repeat="category in categories" ng-class="{active: category === activeCat}">
+        {{category}}
+    </button>
+
+    <button class="category-button" ng-click="getCategoryCards()">
+        Clear Categories
+    </button>
+
+    <div><loader ng-show="loaded"></loader></div>
+
+	<flash-card ng-hide="loaded" ng-repeat="flashCard in flashCards | orderBy:'question'" card="flashCard" >
+	</flash-card>
+</div>

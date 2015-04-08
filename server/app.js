@@ -8,6 +8,7 @@ module.exports = app; // Export it so it can be require('')'d
 
 // The path of our public directory. ([ROOT]/public)
 var publicPath = path.join(__dirname, '../public');
+var BowerCompPath = path.join(__dirname, "../bower_components");
 
 // The path of our index.html file. ([ROOT]/index.html)
 var indexHtmlPath = path.join(__dirname, '../index.html');
@@ -22,6 +23,7 @@ var indexHtmlPath = path.join(__dirname, '../index.html');
 // something in our public folder, serve up that file
 // e.g. angular.js, style.css
 app.use(express.static(publicPath));
+app.use(express.static(BowerCompPath));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -29,12 +31,6 @@ app.use(bodyParser.json());
 // If we're hitting our home page, serve up our index.html file!
 app.get('/', function (req, res) {
     res.sendFile(indexHtmlPath);
-});
-
-app.use(function (req, res, next) {
-	console.log('made it');
-    console.log("body from made it,", req.body);
-	next();
 });
 
 app.get('/cards', function (req, res, next) {

@@ -1,0 +1,38 @@
+<div>
+
+     <!-- <pre>{{newCardForm|json}}</pre> <br/> -->
+     <form name="newCardForm" ng-submit="newCardForm.$valid && createCard(newCard)" novalidate>
+
+         <error ng-show="newCardForm.question.$touched && newCardForm.question.$error.required">Question is a required field</error>
+         <error ng-show="newCardForm.question.$touched && newCardForm.question.$error.minlength">Question is too short</error><br/>
+         <!-- <error ng-show="newCardForm.question.$submitted && newCardForm.question.$error.minlength">Question is too short</error><br/> -->
+
+        Question: <input required name="question" type="text" ng-model="newCard.question" ng-minlength="15"/>
+        <br />
+
+        <error ng-show="newCardForm.answer1.$touched && newCardForm.answer1.$error.maxlength">Answer is too long</error><br/>
+        Answer 1: <input name="answer1" type="text" ng-model="newCard.answers[0].text" ng-maxlength="40"/>
+        <input name="answercheck1" type="checkbox" ng-model="newCard.answers[0].correct" />
+        <br />
+        <error ng-show="newCardForm.answer2.$touched && newCardForm.answer2.$error.maxlength">Answer is too long</error><br/>
+        Answer 2: <input name="answer2" type="text" ng-model="newCard.answers[1].text" ng-maxlength="40"/>
+        <input name="answercheck2" type="checkbox" ng-model="newCard.answers[1].correct" />
+        <br />
+        <error ng-show="newCardForm.answer3.$touched && newCardForm.answer3.$error.maxlength">Answer is too long</error><br/>
+        Answer 3: <input name="answer3" type="text" ng-model="newCard.answers[2].text" ng-maxlength="40"/>
+        <input name="answercheck3" type="checkbox" ng-model="newCard.answers[2].correct" />
+        <br />
+
+        <error ng-show="newCardForm.category.$touched && newCardForm.category.$error.required">Category is a required field</error><br/>
+        Category: 
+        <select required name="category" ng-model="newCard.category" type="text">
+            <option>MongoDB</option>
+            <option>Express</option>
+            <option>Angular</option>
+            <option>Node</option>
+        </select><br />
+
+        <button>Submit!</button>
+    </form>
+
+</div>
